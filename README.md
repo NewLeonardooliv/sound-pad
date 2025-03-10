@@ -1,50 +1,96 @@
-# Welcome to your Expo app 👋
+# Sound Pad
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo de pad musical criado com Expo, que oferece efeitos sonoros e a possibilidade de adicionar uma música em um pad específico, personalizando tanto o som quanto a cor do botão.
 
-## Get started
+## Sumário
 
-1. Install dependencies
+- [Descrição](#descrição)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Instalação e Execução](#instalação-e-execução)
+- [Demonstração](#demonstração)
+- [Contribuições](#contribuições)
+- [Contato](#contato)
 
+---
+
+## Descrição
+
+O **Sound Pad** é um aplicativo mobile que simula um pad musical. Ele contém diversos efeitos sonoros (como baquetas, cliques, etc.) e permite que o usuário adicione sons personalizados a cada pad. É possível escolher cores e diferentes arquivos de som, tornando a experiência única.
+
+## Funcionalidades
+
+- **Botões/Pads de efeitos sonoros**: Pressione os pads para reproduzir sons pré-definidos.  
+- **Personalização de Pads**: Adicione sons personalizados e escolha a cor do pad para diferenciá-lo visualmente.
+
+---
+
+## Tecnologias Utilizadas
+
+- [Expo](https://expo.dev/)  
+- [React Native](https://reactnative.dev/)  
+- [NativeWind (Tailwind CSS para React Native)](https://www.nativewind.dev/)
+
+> **Observação**: O projeto não faz uso de backend ou integrações externas.
+
+---
+
+## Instalação e Execução
+
+Siga os passos abaixo para instalar e executar o projeto localmente:
+
+1. **Clonar o repositório**  
+   ```bash
+   git clone https://github.com/NewLeonardooliv/sound-pad
+   ```
+2. **Instalar dependências**  
    ```bash
    npm install
    ```
-
-2. Start the app
-
+3. **Iniciar o servidor de desenvolvimento**  
    ```bash
-    npx expo start
+   npx expo start
    ```
+4. **Executar no emulador ou dispositivo físico**  
+   - No emulador Android/iOS, digite `a` ou `i` no terminal conforme instruções do Expo.  
+   - Ou use o aplicativo Expo Go (Android/iOS) para escanear o QR code gerado.
 
-In the output, you'll find options to open the app in a
+> **Não é necessária nenhuma variável de ambiente ou chave de API** para rodar este projeto.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Demonstração
 
-## Get a fresh project
+Abaixo, algumas capturas de tela ilustrando o funcionamento do aplicativo:
 
-When you're ready, run:
+### Tela Principal
+![Tela Principal](https://i.imgur.com/bIpPhTD.jpeg)
 
-```bash
-npm run reset-project
-```
+Esta é a tela que contém os pads com os sons padrão. Ao clicar em cada botão, o som correspondente será reproduzido.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Tela de Personalização
+![Tela de Personalização](https://i.imgur.com/atJUYCy.jpeg)
 
-## Learn more
+Nesta tela, você pode:
+- Alterar a cor do pad.
+- Selecionar o arquivo de som personalizado.
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Contribuições
 
-## Join the community
+No momento, **não aceitamos contribuições** externas para este projeto.
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Contato
+
+Em caso de dúvidas ou sugestões, entre em contato por meio do [LinkedIn](https://www.linkedin.com/in/leonardooliv/).
+
+---
+
+> **Observação**: Você pode adicionar seções adicionais caso deseje agradecer colaboradores, mencionar um futuro roadmap ou notas específicas de versões.
+
+---
+
+### Obrigado por conferir o **Sound Pad**! Sinta-se à vontade para deixar uma estrela no repositório caso tenha gostado.
