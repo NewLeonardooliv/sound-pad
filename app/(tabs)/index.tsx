@@ -59,7 +59,7 @@ const ACTIVE_PAD_COLORS = [
 ];
 
 
-const PAD_COUNT_OPTIONS = [4, 6, 8, 16];
+const PAD_COUNT_OPTIONS = [6, 9, 12, 15];
 
 export default function App() {
   const { width, height } = useWindowDimensions();
@@ -71,7 +71,7 @@ export default function App() {
   const [sounds, setSounds] = useState<Record<string, Audio.Sound>>({});
   const [selectedPad, setSelectedPad] = useState<number | null>(null);
   const [activePads, setActivePads] = useState<Record<number, boolean>>({});
-  const [padCount, setPadCount] = useState<number>(16);
+  const [padCount, setPadCount] = useState<number>(12);
   const [showSettings, setShowSettings] = useState(false);
   const padAnimations = useRef<Record<number, Animated.Value>>({});
 
@@ -376,10 +376,12 @@ export default function App() {
         case 4:
           return '23%';
         case 6:
-          return '32%';
-        case 8:
+          return '24%';
+        case 9:
           return '23%';
-        case 16:
+        case 12:
+          return '23%';
+        case 15:
         default:
           return '23%';
       }
@@ -388,10 +390,13 @@ export default function App() {
         case 4:
           return '48%';
         case 6:
+          return '48%';
+        case 9:
           return '31%';
-        case 8:
-          return '23%';
-        case 16:
+        case 12:
+          return '31%';
+        case 15:
+          return '31%';
         default:
           return '23%';
       }
@@ -447,65 +452,63 @@ export default function App() {
           </View>
         </View>
 
-        <ScrollView>
 
-          <View className={`flex-1 ${isLandscape ? 'flex-row' : 'flex-col'}`}>
+        <View className={`flex-1 ${isLandscape ? 'flex-row' : 'flex-col'}`}>
+          <View className="flex-1">
+            {showSettings && (
+              <View className="bg-gray-800 p-4 rounded-lg mb-4">
+                <Text className="text-white text-lg font-bold mb-3">Configurações</Text>
+
+                <Text className="text-white mb-2">Quantidade de Pads:</Text>
+                <View className="flex-row justify-between">
+                  {PAD_COUNT_OPTIONS.map(count => (
+                    <TouchableOpacity
+                      key={count}
+                      className={`px-4 py-2 rounded-lg ${padCount === count ? 'bg-blue-500' : 'bg-gray-700'}`}
+                      onPress={() => changePadCount(count)}
+                    >
+                      <Text className="text-white font-semibold">{count} Pads</Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </View>
+            )}
+
             <View className="flex-1">
-              {showSettings && (
-                <View className="bg-gray-800 p-4 rounded-lg mb-4">
-                  <Text className="text-white text-lg font-bold mb-3">Configurações</Text>
-
-                  <Text className="text-white mb-2">Quantidade de Pads:</Text>
-                  <View className="flex-row justify-between">
-                    {PAD_COUNT_OPTIONS.map(count => (
+              <View className={`flex-row flex-wrap ${padCount === 4 && !isLandscape ? 'justify-around' : 'justify-between'}`}>
+                {pads.map((pad) => {
+                  const isActive = activePads[pad.id];
+                  const padSize = getPadSize();
+                  return (
+                    <Animated.View
+                      key={pad.id}
+                      style={{
+                        transform: [{ scale: padAnimations.current[pad.id] || 1 }],
+                        width: padSize,
+                        aspectRatio: 1,
+                        marginBottom: 12,
+                      }}
+                    >
                       <TouchableOpacity
-                        key={count}
-                        className={`px-4 py-2 rounded-lg ${padCount === count ? 'bg-blue-500' : 'bg-gray-700'}`}
-                        onPress={() => changePadCount(count)}
+                        className={`w-full h-full rounded-lg justify-center items-center ${isActive ? getActivePadColor(pad.color) : pad.color} ${selectedPad === pad.id ? 'border-4 border-white' : ''}`}
+                        onPress={() => handlePadPress(pad.id)}
+                        activeOpacity={0.7}
                       >
-                        <Text className="text-white font-semibold">{count} Pads</Text>
+                        <Text className="text-white text-xs font-semibold">{pad.name}</Text>
+                        <Text className="text-white text-xs opacity-70">PAD{pad.id}</Text>
+                        {pad.customSoundUri && (
+                          <View className="absolute top-1 right-1">
+                            <Ionicons name="musical-note" size={12} color="white" />
+                          </View>
+                        )}
                       </TouchableOpacity>
-                    ))}
-                  </View>
-                </View>
-              )}
-
-              <View className="flex-1">
-                <View className={`flex-row flex-wrap ${padCount === 4 && !isLandscape ? 'justify-around' : 'justify-between'}`}>
-                  {pads.map((pad) => {
-                    const isActive = activePads[pad.id];
-                    const padSize = getPadSize();
-                    return (
-                      <Animated.View
-                        key={pad.id}
-                        style={{
-                          transform: [{ scale: padAnimations.current[pad.id] || 1 }],
-                          width: padSize,
-                          aspectRatio: 1,
-                          marginBottom: 12,
-                        }}
-                      >
-                        <TouchableOpacity
-                          className={`w-full h-full rounded-lg justify-center items-center ${isActive ? getActivePadColor(pad.color) : pad.color} ${selectedPad === pad.id ? 'border-4 border-white' : ''}`}
-                          onPress={() => handlePadPress(pad.id)}
-                          activeOpacity={0.7}
-                        >
-                          <Text className="text-white text-xs font-semibold">{pad.name}</Text>
-                          <Text className="text-white text-xs opacity-70">PAD{pad.id}</Text>
-                          {pad.customSoundUri && (
-                            <View className="absolute top-1 right-1">
-                              <Ionicons name="musical-note" size={12} color="white" />
-                            </View>
-                          )}
-                        </TouchableOpacity>
-                      </Animated.View>
-                    );
-                  })}
-                </View>
+                    </Animated.View>
+                  );
+                })}
               </View>
             </View>
           </View>
-        </ScrollView>
+        </View>
 
         {!isLandscape && editMode && selectedPad && (
           <View className="bg-gray-800 p-4 rounded-lg mt-4">

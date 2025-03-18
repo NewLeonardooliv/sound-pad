@@ -89,8 +89,4 @@ Em caso de dúvidas ou sugestões, entre em contato por meio do [LinkedIn](https
 
 ---
 
-> **Observação**: Você pode adicionar seções adicionais caso deseje agradecer colaboradores, mencionar um futuro roadmap ou notas específicas de versões.
-
----
-
 ### Obrigado por conferir o **Sound Pad**! Sinta-se à vontade para deixar uma estrela no repositório caso tenha gostado.
